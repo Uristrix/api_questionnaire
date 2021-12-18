@@ -18,7 +18,7 @@ router.route("/music_list/:time").post((req, res) =>
     {
         model.findOne({time: req.params.time}, (err, data) => {
             if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
-            res.json(data.music)
+            res.json({music: data.music})
         })
     }
 ).put((req, res) =>
@@ -26,7 +26,7 @@ router.route("/music_list/:time").post((req, res) =>
         model.findOneAndUpdate({time: req.params.time}, {music: req.body.music},
             (err, data) => {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
-                res.json(data.music)
+                res.json({music: data.music})
             })
     }
 ).delete((req, res) =>
@@ -34,7 +34,7 @@ router.route("/music_list/:time").post((req, res) =>
         model.findOneAndDelete({time: req.params.time},
             (err, data) => {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
-                res.json(data.music)
+                res.json({music: data.music})
             })
     }
 )
@@ -57,7 +57,7 @@ router.put("/update/:time", (req, res) => {
         model.findOneAndUpdate({time: req.params.time, music:{$elemMatch: {name: req.body.selected}} }, {"$inc":{"music.$.vote":"1"}}, {new: true},(data,err) =>
             {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
-                res.json(data.music)
+                res.json({music: data.music})
             }
         )
     }

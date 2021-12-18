@@ -11,8 +11,8 @@ const port = process.env.PORT || 3010
 app.use(favicon(path.join(__dirname, 'public', 'bmstu.png')))
 app.use(logger(process.env.LOG_LEVEL));
 app.use(express.json()); // отправка json
-app.use(express.urlencoded({ extended: false })); // для post получение body
-app.use(express.static(path.join(__dirname, 'public'))); // для изображений и прочего говна
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/api_form', require('./routers'));
