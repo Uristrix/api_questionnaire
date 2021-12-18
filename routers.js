@@ -54,7 +54,7 @@ router.get('/time', (req, res) =>
 
 router.put("/update/:time", (req, res) => {
 
-        model.findOneAndUpdate({time: req.params.time, music:{$elemMatch: {name: req.body.selected}} }, {"$inc":{"music.$.vote":"1"}}, {new: true},(data,err) =>
+        model.findOneAndUpdate({time: req.params.time, music:{$elemMatch: {name: req.body.selected}} }, {"$inc":{"music.$.vote":"1"}}, {new: true},(err,data) =>
             {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
                 res.json({music: data.music})
@@ -68,7 +68,7 @@ router.delete("/erase/:time", (req, res) => {
         model.findOneAndUpdate({time: req.params.time}, {"$set":{"music.$[].vote":"0"}}, {new: true},(data, err) =>
             {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
-                res.json(data.music)
+                res.json({music: data.music})
             }
         )
     }
