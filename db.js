@@ -5,6 +5,7 @@ db.connect(process.env.DB_CONNECT,
         useNewUrlParser: true,
         // useCreateIndex: true,
         // useUnifiedTopology: true
+
     },
 )
     .then(() => console.log("Connect"))
