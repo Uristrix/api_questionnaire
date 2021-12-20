@@ -8,6 +8,7 @@ db.connect(process.env.MONGODB_URI,
 
     },
 )
+
     .then(() => console.log("Connect"))
     .catch(err => console.log(err))
 
