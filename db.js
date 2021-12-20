@@ -1,6 +1,6 @@
 const db = require('mongoose')
 
-db.connect(process.env.DB_CONNECT,
+db.connect(process.env.MONGODB_URI,
     {
         useNewUrlParser: true,
         // useCreateIndex: true,
