@@ -65,7 +65,7 @@ router.put("/update/:time", (req, res) => {
 
 router.delete("/erase/:time", (req, res) => {
 
-        model.findOneAndUpdate({time: req.params.time}, {"$set":{"music.$[].vote":"0"}}, {new: true},(data, err) =>
+        model.findOneAndUpdate({time: req.params.time}, {"$set":{"music.$[].vote":"0"}}, {new: true},(err, data) =>
             {
                 if (err) return res.status(400).json({message: "Какие-то проблемы(", err})
                 res.json({music: data.music})

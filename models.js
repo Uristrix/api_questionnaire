@@ -1,7 +1,6 @@
 const db = require("./db");
 
 const music = new db.Schema({
-
         name:
             {
                 type: String,
@@ -17,7 +16,6 @@ const music = new db.Schema({
 )
 
 const turn = new db.Schema({
-
         time:
             {
                 type: String,
